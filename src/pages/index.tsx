@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import SearchableLayout from "@/component/searchable-layout";
+import SearchableLayout from "@/components/searchable-layout";
 
 export default function Home() {
   return <></>;
