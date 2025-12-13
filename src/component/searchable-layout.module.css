@@ -1,0 +1,20 @@
+.searchbar_container {
+  display: flex;
+  gap: 10px;
+}
+.searchbar_container input {
+  flex: 1;
+  padding: 10px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  color: #fff;
+}
+.searchbar_container button {
+  flex-shrink: 0;
+  width: 80px;
+  background-color: #777;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+}

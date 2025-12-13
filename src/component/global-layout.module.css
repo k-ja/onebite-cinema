@@ -1,0 +1,22 @@
+.container {
+  max-width: 800px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding-inline: 20px;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
+.header a {
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(229, 9, 20);
+  cursor: pointer;
+  text-decoration: none;
+}
+.main {
+}
