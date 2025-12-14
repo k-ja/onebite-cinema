@@ -1,0 +1,8 @@
+.container section + section {
+  margin-top: 20px;
+}
+.section_title {
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
