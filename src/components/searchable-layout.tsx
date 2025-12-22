@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styles from "./searchable-layout.module.css";
 
@@ -11,6 +11,10 @@ export default function SearchableLayout({
   const [search, setSearch] = useState("");
 
   const q = (router.query.q as string) ?? "";
+
+  useEffect(() => {
+    setSearch(q || "");
+  }, [q]);
 
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
