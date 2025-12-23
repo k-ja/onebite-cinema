@@ -5,6 +5,7 @@ import MovieItem from "@/components/movie-items";
 import fetchMovies from "@/lib/fetch-movie";
 import { useRouter } from "next/router";
 import { MovieData } from "@/types";
+import Head from "next/head";
 
 export default function Page() {
   const [movies, setMovies] = useState<MovieData[]>([]);
@@ -23,11 +24,22 @@ export default function Page() {
   }, [q]);
 
   return (
-    <Grid>
-      {movies.map((item) => (
-        <MovieItem key={item.id} {...item} />
-      ))}
-    </Grid>
+    <>
+      <Head>
+        <title>검색결과 - 한입시네마</title>
+        <meta property="og:image" content="/thumbnail.png" />
+        <meta property="og:title" content="검색결과 - 한입시네마" />
+        <meta
+          property="og:description"
+          content="한입시네마에 등록된 영화들을 만나보세요."
+        />
+      </Head>
+      <Grid>
+        {movies.map((item) => (
+          <MovieItem key={item.id} {...item} />
+        ))}
+      </Grid>
+    </>
   );
 }
 

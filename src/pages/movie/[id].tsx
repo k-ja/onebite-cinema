@@ -2,6 +2,7 @@ import fetchOneMovie from "@/lib/fetch-one-movie";
 import styles from "./[id].module.css";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 export const getStaticPaths = () => {
   return {
@@ -43,21 +44,29 @@ export default function Page({
   } = movie;
 
   return (
-    <div className={styles.container}>
-      <div
-        className={styles.cover_img_container}
-        style={{
-          backgroundImage: `url('${posterImgUrl}')`,
-        }}>
-        <img src={posterImgUrl} alt={title} />
+    <>
+      <Head>
+        <title>{title} - 한입시네마</title>
+        <meta property="og:image" content={posterImgUrl} />
+        <meta property="og:title" content={`${title} - 한입시네마`} />
+        <meta property="og:description" content={description} />
+      </Head>
+      <div className={styles.container}>
+        <div
+          className={styles.cover_img_container}
+          style={{
+            backgroundImage: `url('${posterImgUrl}')`,
+          }}>
+          <img src={posterImgUrl} alt={title} />
+        </div>
+        <div className={styles.title}>{title}</div>
+        <div>
+          {releaseDate} / {genres} / {runtime}분
+        </div>
+        <div>{company}</div>
+        <div className={styles.subTitle}>{subTitle}</div>
+        <p>{description}</p>
       </div>
-      <div className={styles.title}>{title}</div>
-      <div>
-        {releaseDate} / {genres} / {runtime}분
-      </div>
-      <div>{company}</div>
-      <div className={styles.subTitle}>{subTitle}</div>
-      <p>{description}</p>
-    </div>
+    </>
   );
 }
