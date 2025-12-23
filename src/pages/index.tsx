@@ -3,11 +3,11 @@ import SearchableLayout from "@/components/searchable-layout";
 import MovieItem from "@/components/movie-items";
 import Grid from "@/components/grid";
 import styles from "./index.module.css";
-import { InferGetServerSidePropsType } from "next";
+import { InferGetStaticPropsType } from "next";
 import fetchMovies from "@/lib/fetch-movie";
 import fetchRandomMovies from "@/lib/fetch-random-movie";
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const [allMovies, randomMovies] = await Promise.all([
     fetchMovies(),
     fetchRandomMovies(),
@@ -19,7 +19,7 @@ export const getServerSideProps = async () => {
 export default function Home({
   allMovies,
   randomMovies,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div className={styles.container}>
       <section>

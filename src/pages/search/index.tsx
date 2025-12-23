@@ -1,22 +1,27 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import SearchableLayout from "@/components/searchable-layout";
 import Grid from "@/components/grid";
 import MovieItem from "@/components/movie-items";
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import fetchMovies from "@/lib/fetch-movie";
+import { useRouter } from "next/router";
+import { MovieData } from "@/types";
 
-export const getServerSideProps = async (
-  context: GetServerSidePropsContext
-) => {
-  const q = context.query.q;
-  const movies = await fetchMovies(q as string);
+export default function Page() {
+  const [movies, setMovies] = useState<MovieData[]>([]);
 
-  return { props: { movies } };
-};
+  const router = useRouter();
+  const q = router.query.q;
 
-export default function Page({
-  movies,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const fetchSearchResult = async () => {
+    const data = await fetchMovies(q as string);
+    setMovies(data);
+  };
+
+  useEffect(() => {
+    if (q) fetchSearchResult();
+    return () => {};
+  }, [q]);
+
   return (
     <Grid>
       {movies.map((item) => (
