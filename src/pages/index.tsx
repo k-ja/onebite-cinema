@@ -13,7 +13,10 @@ export const getStaticProps = async () => {
     fetchRandomMovies(),
   ]);
 
-  return { props: { allMovies, randomMovies } };
+  return {
+    props: { allMovies, randomMovies },
+    revalidate: 3,
+  };
 };
 
 export default function Home({
