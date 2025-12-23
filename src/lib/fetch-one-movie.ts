@@ -3,7 +3,7 @@ import { MovieData } from "@/types";
 export default async function fetchOneMovie(
   id: number
 ): Promise<MovieData | null> {
-  const url = `http://localhost:12345/movie/${id}`;
+  const url = `http://onebite-cinema-api-main-swart.vercel.app/movie/${id}`;
 
   try {
     const response = await fetch(url);
